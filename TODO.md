@@ -1,0 +1,1 @@
+- [ ] Optimize loading the assets
