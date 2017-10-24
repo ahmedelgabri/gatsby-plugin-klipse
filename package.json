@@ -16,10 +16,10 @@
   "author": "Ahmed El Gabri <ahmed@gabri.me> (https://gabri.me/)",
   "license": "MIT",
   "devDependencies": {
-    "@ahmedelgabri/eslint-config": "^2.0.0-beta.5",
+    "@ahmedelgabri/eslint-config": "^2.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1"
   }
 }
