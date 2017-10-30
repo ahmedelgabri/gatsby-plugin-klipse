@@ -30,8 +30,8 @@ const defaultSelectors = {
 }
 
 exports.onRenderBody = (
-  { setPostBodyComponents },
-  { classPrefix = '', klipseSettings } = {},
+  { setPostBodyComponents, setHeadComponents },
+  { classPrefix = '', klipseSettings, externalScripts = [] } = {},
 ) => {
   const mergedOpts = Object.assign({}, defaultSelectors, klipseSettings)
   const opts = classPrefix
@@ -43,38 +43,29 @@ exports.onRenderBody = (
       }, {})
     : mergedOpts
 
-  setPostBodyComponents([
-    React.createElement(
-      'link',
-      {
-        key: 'gatsby-remark-klipse-codemirror',
-        rel: 'stylesheet',
-        type: 'text/css',
-        href:
-          'https://storage.googleapis.com/app.klipse.tech/css/codemirror.css',
-      },
-      null,
-    ),
-    React.createElement(
-      'script',
-      {
-        key: 'gatsby-remark-klipse-config',
-        dangerouslySetInnerHTML: {
-          __html: `
-          window.klipse_settings = ${JSON.stringify(opts)};
-        `,
-        },
-      },
-      null,
-    ),
-    React.createElement(
-      'script',
-      {
-        key: 'gatsby-remark-klipse-js',
-        src:
-          'https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js',
-      },
-      null,
-    ),
+  const scriptsToLoad = externalScripts
+    .map((src, i) => (
+      <script key={`gatsby-remark-klipse-external-${i}`} src={src} />
+    ))
+    .concat([
+      <script
+        key="gatsby-remark-klipse-config"
+        dangerouslySetInnerHTML={{
+          __html: `window.klipse_settings = ${JSON.stringify(opts)};`,
+        }}
+      />,
+      <script
+        key="gatsby-remark-klipse-js"
+        src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"
+      />,
+    ])
+
+  setHeadComponents([
+    <link
+      key="gatsby-remark-klipse-codemirror"
+      rel="stylesheet"
+      href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"
+    />,
   ])
+  setPostBodyComponents(scriptsToLoad)
 }

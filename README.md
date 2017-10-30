@@ -20,7 +20,10 @@ plugins: [
       classPrefix: '',
       // Klipse config, you can check it here
       // https://github.com/viebel/klipse#configuration
-      klipseSettings: { ... }
+      klipseSettings: { ... },
+      // To load any external scripts you need, pass an array of URLs. The plugin will always load them before the klipse plugin
+      // defaults to an empty Array
+      externalScripts: [],
     }
   }
 ]
@@ -71,3 +74,4 @@ The text that you pass after the backticks needs to match the part after `select
   selector_transpile_reason_to_ocaml: '.klipse-transpile-reason-to-ocaml', // selector for reason transpilation into ocaml snippets
 }
 ```
+
