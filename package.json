@@ -4,8 +4,9 @@
   "description": "Adds interactive code REPLs at build time using Klipse",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir . --ignore __tests__",
-    "watch": "babel -w src --out-dir . --ignore __tests__",
+    "clean": "rm -rf ./gatsby-ssr.js ./gatsby-browser.js",
+    "build": "yarn clean && babel src --out-dir . --ignore __tests__",
+    "watch": "yarn clean && babel -w src --out-dir . --ignore __tests__",
     "prepublish": "NODE_ENV=production npm run build"
   },
   "keywords": [
