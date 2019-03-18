@@ -1,4 +1,4 @@
-import React from 'react'
+const React = require('react')
 
 const defaultSelectors = {
   selector: '.klipse', //selector for clojure evaluation snippets
@@ -30,8 +30,8 @@ const defaultSelectors = {
 }
 
 exports.onRenderBody = (
-  { setPostBodyComponents, setHeadComponents },
-  { classPrefix = '', klipseSettings, externalScripts = [] } = {},
+  {setPostBodyComponents, setHeadComponents},
+  {classPrefix = '', klipseSettings, externalScripts = []} = {},
 ) => {
   const mergedOpts = Object.assign({}, defaultSelectors, klipseSettings)
   const opts = classPrefix
@@ -44,28 +44,49 @@ exports.onRenderBody = (
     : mergedOpts
 
   const scriptsToLoad = externalScripts
-    .map((src, i) => (
-      <script key={`gatsby-remark-klipse-external-${i}`} src={src} />
-    ))
+    .map((src, i) =>
+      React.createElement(
+        'script',
+        {
+          key: `gatsby-remark-klipse-external-${i}`,
+          src,
+        },
+        null,
+      ),
+    )
     .concat([
-      <script
-        key="gatsby-remark-klipse-config"
-        dangerouslySetInnerHTML={{
-          __html: `window.klipse_settings = ${JSON.stringify(opts)};`,
-        }}
-      />,
-      <script
-        key="gatsby-remark-klipse-js"
-        src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"
-      />,
+      React.createElement(
+        'script',
+        {
+          key: 'gatsby-remark-klipse-config',
+          dangerouslySetInnerHTML: {
+            __html: `window.klipse_settings = ${JSON.stringify(opts)};`,
+          },
+        },
+        null,
+      ),
+      React.createElement(
+        'script',
+        {
+          key: 'gatsby-remark-klipse-js',
+          src:
+            'https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js',
+        },
+        null,
+      ),
     ])
 
   setHeadComponents([
-    <link
-      key="gatsby-remark-klipse-codemirror"
-      rel="stylesheet"
-      href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"
-    />,
+    React.createElement(
+      'link',
+      {
+        key: 'gatsby-remark-klipse-codemirror',
+        rel: 'stylesheet',
+        src:
+          'https://storage.googleapis.com/app.klipse.tech/css/codemirror.css',
+      },
+      null,
+    ),
   ])
   setPostBodyComponents(scriptsToLoad)
 }
