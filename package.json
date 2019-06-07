@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-klipse",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Adds interactive code REPLs at build time using Klipse",
   "main": "index.js",
   "scripts": {
