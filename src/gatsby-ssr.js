@@ -70,7 +70,7 @@ exports.onRenderBody = (
         {
           key: 'gatsby-remark-klipse-js',
           src:
-            'https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js',
+            'https://unpkg.com/klipse@7.5.0/dist/klipse_plugin.min.js',
         },
         null,
       ),
@@ -83,7 +83,7 @@ exports.onRenderBody = (
         key: 'gatsby-remark-klipse-codemirror',
         rel: 'stylesheet',
         src:
-          'https://storage.googleapis.com/app.klipse.tech/css/codemirror.css',
+          'https://unpkg.com/klipse@7.5.0/dist/codemirror.css',
       },
       null,
     ),
