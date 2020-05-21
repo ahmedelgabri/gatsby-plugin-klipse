@@ -30,8 +30,16 @@ const defaultSelectors = {
 }
 
 exports.onRenderBody = (
-  {setPostBodyComponents, setHeadComponents},
-  {classPrefix = '', klipseSettings, externalScripts = []} = {},
+  {
+    setPostBodyComponents,
+    setHeadComponents
+  },
+  {
+    classPrefix = '',
+    klipseSettings,
+    klipseVersion = '7.5.0',
+    externalScripts = []
+  } = {},
 ) => {
   const mergedOpts = Object.assign({}, defaultSelectors, klipseSettings)
   const opts = classPrefix
@@ -70,7 +78,7 @@ exports.onRenderBody = (
         {
           key: 'gatsby-remark-klipse-js',
           src:
-            'https://unpkg.com/klipse@7.5.0/dist/klipse_plugin.min.js',
+            `https://unpkg.com/klipse@${klipseVersion}/dist/klipse_plugin.min.js`,
         },
         null,
       ),
@@ -83,7 +91,7 @@ exports.onRenderBody = (
         key: 'gatsby-remark-klipse-codemirror',
         rel: 'stylesheet',
         src:
-          'https://unpkg.com/klipse@7.5.0/dist/codemirror.css',
+          `https://unpkg.com/klipse@${klipseVersion}/dist/codemirror.css`,
       },
       null,
     ),
