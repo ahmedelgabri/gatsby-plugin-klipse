@@ -7,7 +7,8 @@
     "clean": "rm -rf ./gatsby-ssr.js ./gatsby-browser.js",
     "build": "yarn clean && babel src --out-dir . --ignore __tests__",
     "watch": "yarn clean && babel -w src --out-dir . --ignore __tests__",
-    "prepublish": "NODE_ENV=production npm run build"
+    "prepublish": "NODE_ENV=production npm run build",
+    "release": "np"
   },
   "keywords": [
     "gatsby",
@@ -22,6 +23,6 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-eslint": "^10.1.0",
-    "np": "^6.2.3"
+    "np": "^6.3.2"
   }
 }
