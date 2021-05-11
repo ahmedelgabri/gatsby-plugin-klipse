@@ -23,6 +23,6 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-eslint": "^10.1.0",
-    "np": "^6.3.2"
+    "np": "^7.5.0"
   }
 }
