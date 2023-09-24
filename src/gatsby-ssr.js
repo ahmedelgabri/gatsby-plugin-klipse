@@ -77,7 +77,7 @@ exports.onRenderBody = (
         'script',
         {
           key: 'gatsby-remark-klipse-js',
-          src:
+          href:
             `https://unpkg.com/klipse@${klipseVersion}/dist/klipse_plugin.min.js`,
         },
         null,
