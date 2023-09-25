@@ -90,7 +90,7 @@ exports.onRenderBody = (
       {
         key: 'gatsby-remark-klipse-codemirror',
         rel: 'stylesheet',
-        src:
+        href:
           `https://unpkg.com/klipse@${klipseVersion}/dist/codemirror.css`,
       },
       null,
